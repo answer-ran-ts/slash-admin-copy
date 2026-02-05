@@ -71,3 +71,17 @@ export default defineConfig([
   },
 ])
 ```
+
+
+## 项目构建流程 2026
+1. node 20+版本 ，npm create vite@latest my-app -- --template react-ts
+
+2. ts配置
+ 1. tsconfig.json配置ts规则（严格模式）
+ 2. 新增vite-env.d.ts文件，配置Vite 环境变量类型声明文件（三斜线语法）
+
+3. 安装Tailwindcss，npm install tailwindcss @tailwindcss/vite -D
+  1.vite.config.ts配置：plugins注入tailwindcss()
+
+4. 
+
