@@ -17,9 +17,9 @@ If you are developing a production application, we recommend updating the config
 
 ```js
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(["dist"]),
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ["**/*.{ts,tsx}"],
     extends: [
       // Other configs...
 
@@ -34,82 +34,79 @@ export default defineConfig([
     ],
     languageOptions: {
       parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
         tsconfigRootDir: import.meta.dirname,
       },
       // other options...
     },
   },
-])
+]);
 ```
 
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
 ```js
 // eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+import reactX from "eslint-plugin-react-x";
+import reactDom from "eslint-plugin-react-dom";
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(["dist"]),
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ["**/*.{ts,tsx}"],
     extends: [
       // Other configs...
       // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
+      reactX.configs["recommended-typescript"],
       // Enable lint rules for React DOM
       reactDom.configs.recommended,
     ],
     languageOptions: {
       parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
         tsconfigRootDir: import.meta.dirname,
       },
       // other options...
     },
   },
-])
+]);
 ```
 
-## git提交规范
+## git 提交规范
 
 feat - 新功能 feature
 fix - 修复 bug
 docs - 文档注释
 style - 代码格式(不影响代码运行的变动)
-refactor - 重构、优化(既不增加新功能，也不是修复bug)
+refactor - 重构、优化(既不增加新功能，也不是修复 bug)
 perf - 性能优化
 test - 增加测试
 chore - 构建过程或辅助工具的变动
 revert - 回退
 build - 打包
 
-
 ## 项目构建流程 2026
 
 1. node 20+版本 ，
-  1. `npm create vite@latest my-app -- --template react-ts`
+   `npm create vite@latest my-app -- --template react-ts`
 
-2. ts配置
-  1. tsconfig.json配置ts规则（严格模式）
-  2. 新增vite-env.d.ts文件，配置Vite 环境变量类型声明文件（三斜线语法）
+2. ts 配置
+   tsconfig.json 配置 ts 规则（严格模式）
+   新增 vite-env.d.ts 文件，配置 Vite 环境变量类型声明文件（三斜线语法）
 
-3. 安装Tailwindcss
-  1. `npm install tailwindcss @tailwindcss/vite -D`
-  2. vite.config.ts配置：plugins注入tailwindcss()
+3. 安装 Tailwindcss
+   `npm install tailwindcss @tailwindcss/vite -D`
+   vite.config.ts 配置：plugins 注入 tailwindcss()
 
 4. 安装格式化工具 Biome
-  1.  --save-exact 标志通过固定到特定版本确保团队成员之间的一致行为。
-      `npm install --save-dev --save-exact @biomejs/biome`
-    
-  2.  在项目中初始化 Biome： 
-      `npx biome init`
-  3.  Biome格式化
-      `npx biome format --write ./src`
-      检查代码：
-      `npx biome lint ./src`
-      同时运行格式化和代码检查：
-      `npx biome check --write ./src`
+5. --save-exact 标志通过固定到特定版本确保团队成员之间的一致行为。
+   `npm install --save-dev --save-exact @biomejs/biome`
 
-
+6. 在项目中初始化 Biome：
+   `npx biome init`
+7. Biome 格式化
+   `npx biome format --write ./src`
+   检查代码：
+   `npx biome lint ./src`
+   同时运行格式化和代码检查：
+   `npx biome check --write ./src`
